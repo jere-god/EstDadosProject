@@ -1,6 +1,7 @@
 package Projeto1;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 
@@ -37,9 +38,13 @@ public class Login extends javax.swing.JFrame {
         bntentrar = new javax.swing.JButton();
         txtsenha = new javax.swing.JPasswordField();
         bntsair = new javax.swing.JButton();
+        jllogo = new javax.swing.JLabel();
+        jllogotitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jllogin.setText("Login");
 
@@ -51,6 +56,11 @@ public class Login extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtloginFocusLost(evt);
+            }
+        });
+        txtlogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtloginKeyPressed(evt);
             }
         });
 
@@ -74,6 +84,11 @@ public class Login extends javax.swing.JFrame {
                 txtsenhaFocusLost(evt);
             }
         });
+        txtsenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtsenhaKeyPressed(evt);
+            }
+        });
 
         bntsair.setText("Sair");
         bntsair.addActionListener(new java.awt.event.ActionListener() {
@@ -87,48 +102,63 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jllogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jeremias\\Downloads\\wolf-logo.jpg")); // NOI18N
+
+        jllogotitle.setText("Wolf Enterprise");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jlsenha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtsenha))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jllogin)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(99, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(bntentrar)
-                        .addGap(165, 165, 165))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(bntsair)
-                        .addContainerGap())))
+                        .addContainerGap(114, Short.MAX_VALUE)
+                        .addComponent(jllogo)
+                        .addGap(70, 70, 70)
+                        .addComponent(bntsair))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(164, 164, 164)
+                                .addComponent(bntentrar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(104, 104, 104)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jllogin)
+                                    .addComponent(txtlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlsenha)
+                                    .addComponent(txtsenha, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(jllogotitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bntsair)
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jllogin)
-                    .addComponent(txtlogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlsenha)
-                    .addComponent(txtsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bntsair)
+                    .addComponent(jllogo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jllogotitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jllogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtlogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jlsenha)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
                 .addComponent(bntentrar)
-                .addGap(58, 58, 58))
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,6 +238,23 @@ public class Login extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_bntsairKeyPressed
 
+    private void txtloginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtloginKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txtsenha.grabFocus();
+        }
+    }//GEN-LAST:event_txtloginKeyPressed
+
+    private void txtsenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsenhaKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if ((autenticar(txtlogin.getText(), txtsenha.getText())).equals("1")) {
+            principal = new Principal();
+            this.hide();
+            principal.setVetfunc(vetfunc);
+            principal.setVisible(true);
+        }
+        }
+    }//GEN-LAST:event_txtsenhaKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -256,6 +303,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton bntsair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jllogin;
+    private javax.swing.JLabel jllogo;
+    private javax.swing.JLabel jllogotitle;
     private javax.swing.JLabel jlsenha;
     private javax.swing.JTextField txtlogin;
     private javax.swing.JPasswordField txtsenha;

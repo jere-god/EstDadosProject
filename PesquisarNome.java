@@ -6,6 +6,7 @@
 package Projeto1;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 
@@ -52,6 +53,11 @@ public class PesquisarNome extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtnomeFocusLost(evt);
+            }
+        });
+        txtnome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtnomeKeyPressed(evt);
             }
         });
 
@@ -131,24 +137,24 @@ public class PesquisarNome extends javax.swing.JFrame {
     private void bntpesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bntpesquisarKeyPressed
         funcionario = new Funcionario();
         nomePes = txtnome.getText().toUpperCase();
-        if(nomePes.equals("")){
+        if (nomePes.equals("")) {
             atxtresultpesq.setText("Nenhum funcionário encontrado!");
-        }else{
+        } else {
             String msg = "";
             int a = 0;
-            for(int i=0; i<vetfunc.size(); i++){
+            for (int i = 0; i < vetfunc.size(); i++) {
                 funcionario = (Funcionario) vetfunc.elementAt(i);
                 nome = funcionario.getNome().toUpperCase();
-                if(nome.contains(nomePes)){
+                if (nome.contains(nomePes)) {
                     msg += "Funcionário encontrado!\n";
-                    msg += "Nome: "+funcionario.getNome()+"\n";
-                    msg += "Cargo: "+funcionario.getCargo()+"\n";
-                    msg += "Sal: R$"+funcionario.getSal()+"\n";
+                    msg += "Nome: " + funcionario.getNome() + "\n";
+                    msg += "Cargo: " + funcionario.getCargo() + "\n";
+                    msg += "Sal: R$" + funcionario.getSal() + "\n";
                     msg += "----------------------------------\n";
                     a++;
                 }
             }
-            if(a==0){
+            if (a == 0) {
                 msg = "Nenhum funcionário encontrado!";
             }
             atxtresultpesq.setText(msg);
@@ -173,30 +179,60 @@ public class PesquisarNome extends javax.swing.JFrame {
     private void bntpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntpesquisarActionPerformed
         funcionario = new Funcionario();
         nomePes = txtnome.getText().toUpperCase();
-        if(nomePes.equals("")){
+        if (nomePes.equals("")) {
             atxtresultpesq.setText("Nenhum funcionário encontrado!");
-        }else{
+        } else {
             String msg = "";
             int a = 0;
-            for(int i=0; i<vetfunc.size(); i++){
+            for (int i = 0; i < vetfunc.size(); i++) {
                 funcionario = (Funcionario) vetfunc.elementAt(i);
                 nome = funcionario.getNome().toUpperCase();
-                if(nome.contains(nomePes)){
+                if (nome.contains(nomePes)) {
                     msg += "Funcionário encontrado!\n";
-                    msg += "Nome: "+funcionario.getNome()+"\n";
-                    msg += "Cargo: "+funcionario.getCargo()+"\n";
-                    msg += "Sal: R$"+funcionario.getSal()+"\n";
+                    msg += "Nome: " + funcionario.getNome() + "\n";
+                    msg += "Cargo: " + funcionario.getCargo() + "\n";
+                    msg += "Sal: R$" + funcionario.getSal() + "\n";
                     msg += "----------------------------------\n";
                     a++;
                 }
             }
-            if(a==0){
+            if (a == 0) {
                 msg = "Nenhum funcionário encontrado!";
             }
             atxtresultpesq.setText(msg);
             txtnome.setText("");
         }
     }//GEN-LAST:event_bntpesquisarActionPerformed
+
+    private void txtnomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnomeKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            funcionario = new Funcionario();
+            nomePes = txtnome.getText().toUpperCase();
+            if (nomePes.equals("")) {
+                atxtresultpesq.setText("Nenhum funcionário encontrado!");
+            } else {
+                String msg = "";
+                int a = 0;
+                for (int i = 0; i < vetfunc.size(); i++) {
+                    funcionario = (Funcionario) vetfunc.elementAt(i);
+                    nome = funcionario.getNome().toUpperCase();
+                    if (nome.contains(nomePes)) {
+                        msg += "Funcionário encontrado!\n";
+                        msg += "Nome: " + funcionario.getNome() + "\n";
+                        msg += "Cargo: " + funcionario.getCargo() + "\n";
+                        msg += "Sal: R$" + funcionario.getSal() + "\n";
+                        msg += "----------------------------------\n";
+                        a++;
+                    }
+                }
+                if (a == 0) {
+                    msg = "Nenhum funcionário encontrado!";
+                }
+                atxtresultpesq.setText(msg);
+                txtnome.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtnomeKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -209,8 +245,7 @@ public class PesquisarNome extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private Principal principal;
-    
-    
+
     private Vector vetfunc;
     private Funcionario funcionario;
     private String nome = "";

@@ -1,7 +1,7 @@
-
 package Projeto1;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 
@@ -19,7 +19,7 @@ public class Cadfunc extends javax.swing.JFrame {
         txtcadfuncnome.grabFocus();
         this.setLocationRelativeTo(null);
         this.vetfunc = vetfunc;
-                
+
     }
 
     /**
@@ -57,6 +57,11 @@ public class Cadfunc extends javax.swing.JFrame {
                 txtcadfuncnomeFocusLost(evt);
             }
         });
+        txtcadfuncnome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtcadfuncnomeKeyPressed(evt);
+            }
+        });
 
         jlcadfunccargo.setText("Cargo");
 
@@ -68,6 +73,11 @@ public class Cadfunc extends javax.swing.JFrame {
                 txtcadfunccargoFocusLost(evt);
             }
         });
+        txtcadfunccargo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtcadfunccargoKeyPressed(evt);
+            }
+        });
 
         jlcadfuncsal.setText("Salário");
 
@@ -77,6 +87,11 @@ public class Cadfunc extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtcadfuncsalFocusLost(evt);
+            }
+        });
+        txtcadfuncsal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtcadfuncsalKeyPressed(evt);
             }
         });
 
@@ -177,18 +192,18 @@ public class Cadfunc extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private int autenticar(String nome, String cargo, double sal){
-        if(!nome.equals("") && !cargo.equals("") && !(sal==0)){
+    private int autenticar(String nome, String cargo, double sal) {
+        if (!nome.equals("") && !cargo.equals("") && !(sal == 0)) {
             return 1;
-        }else{
+        } else {
             String msg = "Você deixou algum campo vazio ou inseriu algum valor inválido!";
             JOptionPane.showMessageDialog(null, msg, "siscad", JOptionPane.WARNING_MESSAGE);
             return 2;
         }
     }
-    
+
     private void bntvoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntvoltarActionPerformed
-        
+
         this.hide();
         principal = new Principal();
         principal.setVetfunc(vetfunc);
@@ -199,13 +214,13 @@ public class Cadfunc extends javax.swing.JFrame {
 
         this.nome = txtcadfuncnome.getText();
         this.cargo = txtcadfunccargo.getText();
-        try{
+        try {
             this.sal = Double.parseDouble(txtcadfuncsal.getText());
-        }catch(Exception e){
+        } catch (Exception e) {
             this.sal = 0;
         }
-        
-        switch(autenticar(this.nome, this.cargo, this.sal)){
+
+        switch (autenticar(this.nome, this.cargo, this.sal)) {
             case 1:
                 funcionario = new Funcionario(this.nome, this.cargo, this.sal);
                 vetfunc.addElement(funcionario);
@@ -215,13 +230,13 @@ public class Cadfunc extends javax.swing.JFrame {
                 txtcadfunccargo.setText("");
                 txtcadfuncsal.setText("");
                 txtcadfuncnome.grabFocus();
-            break;
+                break;
             default:
                 msg = "ERRO. Tente novamente!";
-            break;                
-        
+                break;
+
         }
-        
+
     }//GEN-LAST:event_bntcadastrarActionPerformed
 
     private void txtcadfuncnomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcadfuncnomeFocusGained
@@ -251,13 +266,13 @@ public class Cadfunc extends javax.swing.JFrame {
     private void bntcadastrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bntcadastrarKeyPressed
         this.nome = txtcadfuncnome.getText();
         this.cargo = txtcadfunccargo.getText();
-        try{
+        try {
             this.sal = Double.parseDouble(txtcadfuncsal.getText());
-        }catch(Exception e){
+        } catch (Exception e) {
             this.sal = 0;
         }
-        
-        switch(autenticar(this.nome, this.cargo, this.sal)){
+
+        switch (autenticar(this.nome, this.cargo, this.sal)) {
             case 1:
                 funcionario = new Funcionario(this.nome, this.cargo, this.sal);
                 vetfunc.addElement(funcionario);
@@ -267,11 +282,10 @@ public class Cadfunc extends javax.swing.JFrame {
                 txtcadfunccargo.setText("");
                 txtcadfuncsal.setText("");
                 txtcadfuncnome.grabFocus();
-            break;
+                break;
             default:
                 msg = "ERRO. Tente novamente!";
-            break;                
-        
+                break;
         }
     }//GEN-LAST:event_bntcadastrarKeyPressed
 
@@ -282,6 +296,46 @@ public class Cadfunc extends javax.swing.JFrame {
         principal.setVisible(true);
     }//GEN-LAST:event_bntvoltarKeyPressed
 
+    private void txtcadfuncnomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcadfuncnomeKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtcadfunccargo.grabFocus();
+        }
+    }//GEN-LAST:event_txtcadfuncnomeKeyPressed
+
+    private void txtcadfunccargoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcadfunccargoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtcadfuncsal.grabFocus();
+        }
+    }//GEN-LAST:event_txtcadfunccargoKeyPressed
+
+    private void txtcadfuncsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcadfuncsalKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            this.nome = txtcadfuncnome.getText();
+            this.cargo = txtcadfunccargo.getText();
+            try {
+                this.sal = Double.parseDouble(txtcadfuncsal.getText());
+            } catch (Exception e) {
+                this.sal = 0;
+            }
+
+            switch (autenticar(this.nome, this.cargo, this.sal)) {
+                case 1:
+                    funcionario = new Funcionario(this.nome, this.cargo, this.sal);
+                    vetfunc.addElement(funcionario);
+                    String msg = "Funcionario cadastrado com sucesso!";
+                    JOptionPane.showMessageDialog(null, msg, "siscad", JOptionPane.INFORMATION_MESSAGE);
+                    txtcadfuncnome.setText("");
+                    txtcadfunccargo.setText("");
+                    txtcadfuncsal.setText("");
+                    txtcadfuncnome.grabFocus();
+                    break;
+                default:
+                    msg = "ERRO. Tente novamente!";
+                    break;
+            }
+        }
+    }//GEN-LAST:event_txtcadfuncsalKeyPressed
+
     public Vector getVetfunc() {
         return vetfunc;
     }
@@ -290,7 +344,6 @@ public class Cadfunc extends javax.swing.JFrame {
         this.vetfunc = vetfunc;
     }
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntcadastrar;
@@ -308,7 +361,7 @@ public class Cadfunc extends javax.swing.JFrame {
     private String nome;
     private String cargo;
     private double sal;
-    
+
     private Vector vetfunc;
     private Funcionario funcionario;
     private Principal principal;

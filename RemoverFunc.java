@@ -6,6 +6,7 @@
 package Projeto1;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.Vector;
 import javafx.scene.control.ButtonBar;
 import javax.security.auth.callback.ConfirmationCallback;
@@ -28,7 +29,7 @@ public class RemoverFunc extends javax.swing.JFrame {
         txtnumfunc.setVisible(false);
         jlnumfunc.setVisible(false);
         txtnome.grabFocus();
-        
+
     }
 
     /**
@@ -63,6 +64,11 @@ public class RemoverFunc extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtnomeFocusLost(evt);
+            }
+        });
+        txtnome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtnomeKeyPressed(evt);
             }
         });
 
@@ -116,6 +122,12 @@ public class RemoverFunc extends javax.swing.JFrame {
         bntverregistro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 bntverregistroKeyPressed(evt);
+            }
+        });
+
+        txtnumfunc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtnumfuncKeyPressed(evt);
             }
         });
 
@@ -204,22 +216,22 @@ public class RemoverFunc extends javax.swing.JFrame {
         nomePes = txtnome.getText().toUpperCase();
         String msg = "";
         int a = 0;
-        for(int i=0; i<vetfunc.size(); i++){
+        for (int i = 0; i < vetfunc.size(); i++) {
             funcionario = (Funcionario) vetfunc.elementAt(i);
             nome = funcionario.getNome().toUpperCase();
-            if(nome.equals(nomePes)){
+            if (nome.equals(nomePes)) {
                 msg += "Funcionário encontrado!\n";
-                msg += "Funcionário nº "+(i+1)+"\n";
-                msg += "Nome: "+funcionario.getNome()+"\n";
-                msg += "Cargo: "+funcionario.getCargo()+"\n";
-                msg += "Sal: R$"+funcionario.getSal()+"\n";
+                msg += "Funcionário nº " + (i + 1) + "\n";
+                msg += "Nome: " + funcionario.getNome() + "\n";
+                msg += "Cargo: " + funcionario.getCargo() + "\n";
+                msg += "Sal: R$" + funcionario.getSal() + "\n";
                 msg += "----------------------------------\n";
                 a++;
             }
         }
-        if(a==0){
+        if (a == 0) {
             msg = "Nenhum funcionário encontrado!";
-        }else{
+        } else {
             txtnome.setText("");
             bntremover.setVisible(true);
             txtnumfunc.setVisible(true);
@@ -229,19 +241,19 @@ public class RemoverFunc extends javax.swing.JFrame {
     }//GEN-LAST:event_bntpesquisarActionPerformed
 
     private void bntremoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntremoverActionPerformed
-        try{
+        try {
             numfunc = Integer.parseInt(txtnumfunc.getText());
             String msg = "Você tem certeza que deseja remover esses dados? (S/N)";
-                int certeza = JOptionPane.showConfirmDialog(null, msg, "system", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-                if(certeza==ConfirmationCallback.YES){
-                    vetfunc.remove(numfunc-1);
-                    atxtresultpesq.setText("");
-                    txtnumfunc.setText("");
-                    txtnumfunc.setVisible(false);
-                    jlnumfunc.setVisible(false);
-                    bntremover.setVisible(false);
-                }
-        }catch(Exception e){
+            int certeza = JOptionPane.showConfirmDialog(null, msg, "system", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (certeza == ConfirmationCallback.YES) {
+                vetfunc.remove(numfunc - 1);
+                atxtresultpesq.setText("");
+                txtnumfunc.setText("");
+                txtnumfunc.setVisible(false);
+                jlnumfunc.setVisible(false);
+                bntremover.setVisible(false);
+            }
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Número inválido!", "system", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_bntremoverActionPerformed
@@ -265,22 +277,22 @@ public class RemoverFunc extends javax.swing.JFrame {
         nomePes = txtnome.getText().toUpperCase();
         String msg = "";
         int a = 0;
-        for(int i=0; i<vetfunc.size(); i++){
+        for (int i = 0; i < vetfunc.size(); i++) {
             funcionario = (Funcionario) vetfunc.elementAt(i);
             nome = funcionario.getNome().toUpperCase();
-            if(nome.equals(nomePes)){
+            if (nome.equals(nomePes)) {
                 msg += "Funcionário encontrado!\n";
-                msg += "Funcionário nº "+(i+1)+"\n";
-                msg += "Nome: "+funcionario.getNome()+"\n";
-                msg += "Cargo: "+funcionario.getCargo()+"\n";
-                msg += "Sal: R$"+funcionario.getSal()+"\n";
+                msg += "Funcionário nº " + (i + 1) + "\n";
+                msg += "Nome: " + funcionario.getNome() + "\n";
+                msg += "Cargo: " + funcionario.getCargo() + "\n";
+                msg += "Sal: R$" + funcionario.getSal() + "\n";
                 msg += "----------------------------------\n";
                 a++;
             }
         }
-        if(a==0){
+        if (a == 0) {
             msg = "Nenhum funcionário encontrado!";
-        }else{
+        } else {
             txtnome.setText("");
             bntremover.setVisible(true);
             txtnumfunc.setVisible(true);
@@ -290,19 +302,19 @@ public class RemoverFunc extends javax.swing.JFrame {
     }//GEN-LAST:event_bntpesquisarKeyPressed
 
     private void bntremoverKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bntremoverKeyPressed
-        try{
+        try {
             numfunc = Integer.parseInt(txtnumfunc.getText());
             String msg = "Você tem certeza que deseja remover esses dados? (S/N)";
-                int certeza = JOptionPane.showConfirmDialog(null, msg, "system", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-                if(certeza==ConfirmationCallback.YES){
-                    vetfunc.remove(numfunc-1);
-                    atxtresultpesq.setText("");
-                    txtnumfunc.setText("");
-                    txtnumfunc.setVisible(false);
-                    jlnumfunc.setVisible(false);
-                    bntremover.setVisible(false);
-                }
-        }catch(Exception e){
+            int certeza = JOptionPane.showConfirmDialog(null, msg, "system", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (certeza == ConfirmationCallback.YES) {
+                vetfunc.remove(numfunc - 1);
+                atxtresultpesq.setText("");
+                txtnumfunc.setText("");
+                txtnumfunc.setVisible(false);
+                jlnumfunc.setVisible(false);
+                bntremover.setVisible(false);
+            }
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Número inválido!", "system", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_bntremoverKeyPressed
@@ -318,6 +330,57 @@ public class RemoverFunc extends javax.swing.JFrame {
         this.hide();
         listarfunc.setVisible(true);
     }//GEN-LAST:event_bntverregistroKeyPressed
+
+    private void txtnomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnomeKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            funcionario = new Funcionario();
+            nomePes = txtnome.getText().toUpperCase();
+            String msg = "";
+            int a = 0;
+            for (int i = 0; i < vetfunc.size(); i++) {
+                funcionario = (Funcionario) vetfunc.elementAt(i);
+                nome = funcionario.getNome().toUpperCase();
+                if (nome.equals(nomePes)) {
+                    msg += "Funcionário encontrado!\n";
+                    msg += "Funcionário nº " + (i + 1) + "\n";
+                    msg += "Nome: " + funcionario.getNome() + "\n";
+                    msg += "Cargo: " + funcionario.getCargo() + "\n";
+                    msg += "Sal: R$" + funcionario.getSal() + "\n";
+                    msg += "----------------------------------\n";
+                    a++;
+                }
+            }
+            if (a == 0) {
+                msg = "Nenhum funcionário encontrado!";
+            } else {
+                txtnome.setText("");
+                bntremover.setVisible(true);
+                txtnumfunc.setVisible(true);
+                jlnumfunc.setVisible(true);
+            }
+            atxtresultpesq.setText(msg);
+        }
+    }//GEN-LAST:event_txtnomeKeyPressed
+
+    private void txtnumfuncKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnumfuncKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                numfunc = Integer.parseInt(txtnumfunc.getText());
+                String msg = "Você tem certeza que deseja remover esses dados? (S/N)";
+                int certeza = JOptionPane.showConfirmDialog(null, msg, "system", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                if (certeza == ConfirmationCallback.YES) {
+                    vetfunc.remove(numfunc - 1);
+                    atxtresultpesq.setText("");
+                    txtnumfunc.setText("");
+                    txtnumfunc.setVisible(false);
+                    jlnumfunc.setVisible(false);
+                    bntremover.setVisible(false);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Número inválido!", "system", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_txtnumfuncKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -336,10 +399,10 @@ public class RemoverFunc extends javax.swing.JFrame {
 
     private Principal principal;
     private ListarFunc listarfunc;
-    
+
     private Vector vetfunc;
     private Funcionario funcionario;
-    
+
     private String nome = "";
     private String nomePes = "";
     private int numfunc;
