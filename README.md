@@ -1,7 +1,7 @@
 # EstDadosProject
 Trabalho final de Estruturas de Dados. 2018.2. Segundo semestre.
 
-Contibuintes:
+Contribuintes:
 Jeremias Abreu
 Felipe Cunha
 Diego Dantas
